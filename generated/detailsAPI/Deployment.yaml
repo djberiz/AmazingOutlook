@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  detailsAPI-deployment
+  labels:
+    app: DigitalProductABC
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: detailsAPI
+  template:
+    metadata:
+      labels:
+        app: detailsAPI
+    spec:
+      containers:
+      - name: detailsAPI
+        image: my-library/ImageABC:1.1
+        ports:
+        - containerPort: 9080
+      serviceAccountName: detailsAPI-service-account
